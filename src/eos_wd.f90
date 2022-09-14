@@ -5,7 +5,7 @@
       use chem_def
       use chem_lib
       use const_lib
-      use crlibm_lib
+      use math_lib
 
       implicit none
 
@@ -95,18 +95,18 @@
         call eosDT_get( &
              handle, Z, X, abar, zbar, &
              species, chem_id, net_iso, xa, &
-             Rho, log10_cr(Rho), T, log10T,  &
+             Rho, log10(Rho), T, log10T,  &
              res, d_dlnd, d_dlnT, d_dabar, d_dzbar, ierr)
          
         
 1       format(a20,3x,e20.12)
 
-        Pgas = exp_cr(res(i_lnPgas))
+        Pgas = exp(res(i_lnPgas))
 
         ! deallocate the eos tables
         ! call Shutdown_eos(handle)
 
-        p=exp_cr(res(i_lnPgas))
+        p=exp(res(i_lnPgas))
 
         dpdro=(p/rho)*res(i_chiRho)
         dpdt =  (p/t)*res(i_chiT)

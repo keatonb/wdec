@@ -6,7 +6,7 @@ module kappa
   use chem_def
   use const_def
   use const_lib
-  use crlibm_lib
+  use math_lib
 
   implicit none
 

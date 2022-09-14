@@ -5,7 +5,7 @@ module wd_eos_mod
   use chem_def
   use chem_lib
   use const_lib
-  use crlibm_lib
+  use math_lib
 
   implicit none
 
@@ -118,7 +118,7 @@ contains
 
 
     T = temp
-    log10T = log10_cr(T)
+    log10T = log10(T)
 
     if (eflag == 'd') then
        Rho = in1
@@ -126,10 +126,10 @@ contains
        call eosDT_get( &
             handle, Z, X, abar, zbar,  &
             species, chem_id, net_iso, xa, &
-            Rho, log10_cr(Rho), T, log10_cr(T),  &
+            Rho, log10(Rho), T, log10(T),  &
             res, d_dlnd, d_dlnT, d_dabar, d_dzbar, ierr)
 
-       Pgas = exp_cr(res(i_lnPgas))
+       Pgas = exp(res(i_lnPgas))
        out = Pgas
 
     else if (eflag == 'p') then
@@ -138,7 +138,7 @@ contains
        call eosPT_get(  &
             handle, Z, X, abar, zbar,   &
             species, chem_id, net_iso, xa, &
-            Pgas, log10_cr(Pgas), T, log10_cr(T),  &
+            Pgas, log10(Pgas), T, log10(T),  &
             Rho, log10Rho, dlnRho_dlnPgas_const_T, dlnRho_dlnT_const_Pgas,  &
             res, d_dlnd, d_dlnT, d_dabar, d_dzbar, ierr)
 

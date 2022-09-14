@@ -1,6 +1,6 @@
 
 program wd_test
-  use wd_eos_mod, only : wd_eos, dp, log10_cr
+  use wd_eos_mod, only : wd_eos, dp, log10
   use kappa, only : opalz
 
   implicit none
